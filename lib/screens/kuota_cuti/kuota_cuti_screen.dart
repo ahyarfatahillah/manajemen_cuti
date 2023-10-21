@@ -21,21 +21,23 @@ class KuotaCutiScreen extends StatelessWidget {
       body: SizedBox(
         width: maxWidth,
         height: maxHeight,
-        child: Column(
-          children: [
-            CutiCard(
-              title: "Kuota Cuti Tahunan",
-              value: data.kuotaCutiTahunan,
-            ),
-            CutiCard(
-              title: "Cuti Terpakai",
-              value: data.cutiTerpakai,
-            ),
-            CutiCard(
-              title: "Sisa Cuti",
-              value: data.kuotaCutiTahunan - data.cutiTerpakai,
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              CutiCard(
+                title: "Kuota Cuti Tahunan",
+                value: data.kuotaCutiTahunan,
+              ),
+              CutiCard(
+                title: "Cuti Terpakai",
+                value: data.cutiTerpakai,
+              ),
+              CutiCard(
+                title: "Sisa Cuti",
+                value: data.kuotaCutiTahunan - data.cutiTerpakai,
+              ),
+            ],
+          ),
         ),
       ),
     );

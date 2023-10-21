@@ -16,30 +16,32 @@ class CutiDiajukanScreen extends StatelessWidget {
         title: Text('Cuti Diajukan'),
         centerTitle: true,
       ),
-      body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Column(
-              children: data.map(
-            (item) {
-              final tanggalstring = item.tanggal.split(" ");
-              return Column(
-                children: [
-                  ListTile(
-                    title: Text(tanggalstring[0]),
-                    subtitle: Text(item.alasanCuti),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete),
-                      onPressed: () {
-                        kuotaCutiProvider.decrementCutiTerpakai();
-                        cutiDiajukanProvider.deleteData(item.id);
-                      },
+      body: SingleChildScrollView(
+        child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Column(
+                children: data.map(
+              (item) {
+                final tanggalstring = item.tanggal.split(" ");
+                return Column(
+                  children: [
+                    ListTile(
+                      title: Text(tanggalstring[0]),
+                      subtitle: Text(item.alasanCuti),
+                      trailing: IconButton(
+                        icon: const Icon(Icons.delete),
+                        onPressed: () {
+                          kuotaCutiProvider.decrementCutiTerpakai();
+                          cutiDiajukanProvider.deleteData(item.id);
+                        },
+                      ),
                     ),
-                  ),
-                  const Divider(),
-                ],
-              );
-            },
-          ).toList())),
+                    const Divider(),
+                  ],
+                );
+              },
+            ).toList())),
+      ),
     );
   }
 }
